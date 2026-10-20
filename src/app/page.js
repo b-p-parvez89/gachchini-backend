@@ -1,0 +1,1 @@
+export default function Home() { return <main style={{fontFamily:'sans-serif',padding:32,maxWidth:760,margin:'auto'}}><h1>🌿 গাছচিনি API</h1><p>Backend is running. Health endpoint: <code>/api/health</code></p><p>API docs: <code>API_DOCUMENTATION.md</code></p></main>; }

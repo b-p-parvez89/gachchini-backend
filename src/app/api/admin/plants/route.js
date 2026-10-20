@@ -1,0 +1,2 @@
+import { connectDB } from '@/lib/db'; import Plant from '@/models/Plant'; import { requireAdmin } from '@/lib/auth'; import { ok, fail, handleError } from '@/lib/http';
+export async function POST(request){try{const a=await requireAdmin(request);if(a.response)return a.response;const body=await request.json();if(!body.nameBn||!body.scientificName||!body.descriptionBn)return fail('nameBn, scientificName ও descriptionBn আবশ্যক',422);await connectDB();const plant=await Plant.create({...body,createdBy:a.user._id});return ok({plant},201)}catch(e){return handleError(e)}}

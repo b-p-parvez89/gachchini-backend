@@ -1,0 +1,3 @@
+import mongoose from 'mongoose';
+const UserSchema = new mongoose.Schema({ name: { type: String, required: true, trim: true, maxlength: 80 }, email: { type: String, required: true, unique: true, lowercase: true, trim: true, index: true }, passwordHash: { type: String, required: true, select: false }, avatarUrl: { type: String, default: '' }, role: { type: String, enum: ['user','admin'], default: 'user' }, preferredLanguage: { type: String, enum: ['bn','en'], default: 'bn' }, isActive: { type: Boolean, default: true }, favoritePlantIds: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Plant' }] }, { timestamps: true });
+export default mongoose.models.User || mongoose.model('User', UserSchema);

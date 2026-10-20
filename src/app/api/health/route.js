@@ -1,0 +1,2 @@
+import { ok } from '@/lib/http';
+export async function GET() { return ok({ service:'GachChini API', status:'healthy', timestamp:new Date().toISOString(), configured:{ database:Boolean(process.env.MONGODB_URI), cloudinary:Boolean(process.env.CLOUDINARY_CLOUD_NAME&&process.env.CLOUDINARY_API_KEY&&process.env.CLOUDINARY_API_SECRET), plantnet:Boolean(process.env.PLANTNET_API_KEY), gemini:Boolean(process.env.GEMINI_API_KEY) } }); }

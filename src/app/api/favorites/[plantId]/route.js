@@ -1,0 +1,2 @@
+import { connectDB } from '@/lib/db'; import User from '@/models/User'; import { requireAuth } from '@/lib/auth'; import { ok, handleError } from '@/lib/http';
+export async function DELETE(request,{params}){try{const a=await requireAuth(request);if(a.response)return a.response;const {plantId}=await params;await connectDB();await User.updateOne({_id:a.user._id},{$pull:{favoritePlantIds:plantId}});return ok({message:'পছন্দের তালিকা থেকে সরানো হয়েছে'})}catch(e){return handleError(e)}}
